@@ -45,3 +45,13 @@ To run the docker image, utilising a docker bind to a local folder:
 ```
 docker run -v "${PWD}\Files:/RTSPbrute" -it rtspbrute -t targets.txt
 ```
+## Viewing the results
+RTSPbrute will create a subfolder within `\Files` (where your `targets.txt` is stored) named `Reports`.
+
+In there you'll find a new folder for each time you run RTSPbrute.
+
+And as long as you used the docker bind mount (as per above), to mount a local folder into the RTSPbrute container, these results will be available from outside the container, and will persist for each run.
+
+As per RTSPbrute, this folder will contain:
+* `result.txt` - a list of the IPs where RTSP cams were found, what the URI is, and the user/pass that worked.
+* `index.html` - a webpage, displaying the images that were captured against the scanned IPs
